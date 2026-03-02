@@ -49,7 +49,7 @@ function getRoleConfig(role) {
   const normalizedRole = String(role || "").toUpperCase();
 
   const isLoja = normalizedRole === "LOJA";
-  const isAdmin = normalizedRole !== "LOJA";
+  const isAdmin = normalizedRole === "ADMIN";
 
   return {
     normalizedRole,

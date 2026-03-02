@@ -37,26 +37,77 @@ const menuStructure = [
     color: "group-hover:text-emerald-300",
     roles: ["ADMIN"],
     subItems: [
-      { label: "Painel", page: "Dashboard", icon: <Activity size={13} /> },
-      { label: "KPIs", page: "KPIs", icon: <PieChart size={13} /> },
-      { label: "Relatórios", page: "Relatorios", icon: <FileText size={13} /> },
+      {
+        label: "Painel",
+        page: "Dashboard",
+        roles: ["ADMIN"],
+        icon: <Activity size={13} />,
+      },
+      {
+        label: "KPIs",
+        page: "KPIs",
+        roles: ["ADMIN"],
+        icon: <PieChart size={13} />,
+      },
+      {
+        label: "Relatórios",
+        page: "Relatorios",
+        roles: ["ADMIN"],
+        icon: <FileText size={13} />,
+      },
     ],
   },
   {
-  id: "fabrica",
-  label: "Fábrica",
-  icon: <Factory size={15} />,
-  color: "group-hover:text-blue-300",
-  roles: ["ADMIN", "FABRICA"],
-  subItems: [
-    { label: "Painel", page: "DashboardFabricaFuncionarios", icon: <LayoutDashboard size={13} /> },
-    { label: "Produção", page: "Estoque", icon: <Factory size={13} /> },
-    { label: "Insumos", page: "Suprimentos", icon: <Package size={13} /> },
-    { label: "Qualidade", page: "Qualidade", icon: <ClipboardList size={13} /> },
-    { label: "Ativos", page: "Manutencao", icon: <Wrench size={13} /> },
-    { label: "Reformas", page: "Restauracao", icon: <Wrench size={13} /> },
-  ],
-},
+    id: "fabrica",
+    label: "Fábrica",
+    icon: <Factory size={15} />,
+    color: "group-hover:text-blue-300",
+    roles: ["ADMIN", "FABRICA"],
+    subItems: [
+      {
+        label: "Painel",
+        page: "DashboardFabrica",
+        roles: ["ADMIN"],
+        icon: <LayoutDashboard size={13} />,
+      },
+      {
+        label: "Painel",
+        page: "DashboardFabricaFuncionario",
+        roles: ["FABRICA"],
+        icon: <LayoutDashboard size={13} />,
+      },
+      {
+        label: "Produção",
+        page: "Estoque",
+        roles: ["ADMIN", "FABRICA"],
+        icon: <Factory size={13} />,
+      },
+      {
+        label: "Insumos",
+        page: "Suprimentos",
+        roles: ["ADMIN", "FABRICA"],
+        icon: <Package size={13} />,
+      },
+      {
+        label: "Qualidade",
+        page: "Qualidade",
+        roles: ["ADMIN", "FABRICA"],
+        icon: <ClipboardList size={13} />,
+      },
+      {
+        label: "Ativos",
+        page: "Manutencao",
+        roles: ["ADMIN", "FABRICA"],
+        icon: <Wrench size={13} />,
+      },
+      {
+        label: "Reformas",
+        page: "Restauracao",
+        roles: ["ADMIN", "FABRICA"],
+        icon: <Wrench size={13} />,
+      },
+    ],
+  },
   {
     id: "loja",
     label: "Loja",
@@ -64,10 +115,30 @@ const menuStructure = [
     color: "group-hover:text-rose-300",
     roles: ["ADMIN", "LOJA"],
     subItems: [
-      { label: "Painel", page: "DashboardLoja", icon: <LayoutDashboard size={13} /> },
-      { label: "Showroom", page: "Loja", icon: <Tag size={13} /> },
-      { label: "PDV", page: "PDV", icon: <CreditCard size={13} /> },
-      { label: "CRM", page: "Clientes", icon: <Users size={13} /> },
+      {
+        label: "Painel",
+        page: "DashboardLoja",
+        roles: ["ADMIN", "LOJA"],
+        icon: <LayoutDashboard size={13} />,
+      },
+      {
+        label: "Showroom",
+        page: "Loja",
+        roles: ["ADMIN", "LOJA"],
+        icon: <Tag size={13} />,
+      },
+      {
+        label: "PDV",
+        page: "PDV",
+        roles: ["ADMIN", "LOJA"],
+        icon: <CreditCard size={13} />,
+      },
+      {
+        label: "CRM",
+        page: "Clientes",
+        roles: ["ADMIN", "LOJA"],
+        icon: <Users size={13} />,
+      },
     ],
   },
   {
@@ -77,11 +148,36 @@ const menuStructure = [
     color: "group-hover:text-[#b49157]",
     roles: ["ADMIN"],
     subItems: [
-      { label: "Painel", page: "DashboardFinanceiro", icon: <LayoutDashboard size={13} /> },
-      { label: "Custos", page: "Financeiro", icon: <Wrench size={13} /> },
-      { label: "Caixa", page: "FluxoCaixa", icon: <TrendingUp size={13} /> },
-      { label: "DRE", page: "DRE", icon: <FileText size={13} /> },
-      { label: "Contas", page: "Contas", icon: <Wallet size={13} /> },
+      {
+        label: "Painel",
+        page: "DashboardFinanceiro",
+        roles: ["ADMIN"],
+        icon: <LayoutDashboard size={13} />,
+      },
+      {
+        label: "Custos",
+        page: "Financeiro",
+        roles: ["ADMIN"],
+        icon: <Wrench size={13} />,
+      },
+      {
+        label: "Caixa",
+        page: "FluxoCaixa",
+        roles: ["ADMIN"],
+        icon: <TrendingUp size={13} />,
+      },
+      {
+        label: "DRE",
+        page: "DRE",
+        roles: ["ADMIN"],
+        icon: <FileText size={13} />,
+      },
+      {
+        label: "Contas",
+        page: "Contas",
+        roles: ["ADMIN"],
+        icon: <Wallet size={13} />,
+      },
     ],
   },
 ];
@@ -134,7 +230,7 @@ function Header({ paginaAtual, setPagina, onLogout, userRole }) {
 
   const getPaginaInicialPorRole = (role) => {
     if (role === "LOJA") return "DashboardLoja";
-    if (role === "FABRICA") return "DashboardFabrica";
+    if (role === "FABRICA") return "DashboardFabricaFuncionario";
     return "Dashboard";
   };
 
@@ -156,25 +252,35 @@ function Header({ paginaAtual, setPagina, onLogout, userRole }) {
     handleNavegar(getPaginaInicialPorRole(userRole));
   };
 
+  const getVisibleSubItems = (section) => {
+    return (section.subItems || []).filter((subItem) =>
+      (subItem.roles || []).includes(userRole)
+    );
+  };
+
   const menuFiltrado = useMemo(() => {
-    return menuStructure.filter((section) => section.roles.includes(userRole));
+    return menuStructure
+      .filter((section) => section.roles.includes(userRole))
+      .map((section) => ({
+        ...section,
+        subItems: getVisibleSubItems(section),
+      }))
+      .filter((section) => section.subItems.length > 0);
   }, [userRole]);
 
   const menuLinearOperacional = useMemo(() => {
     if (isLoja) {
-      return (
-        menuStructure.find((section) => section.id === "loja")?.subItems || []
-      );
+      const lojaSection = menuStructure.find((section) => section.id === "loja");
+      return lojaSection ? getVisibleSubItems(lojaSection) : [];
     }
 
     if (isFabrica) {
-      return (
-        menuStructure.find((section) => section.id === "fabrica")?.subItems || []
-      );
+      const fabricaSection = menuStructure.find((section) => section.id === "fabrica");
+      return fabricaSection ? getVisibleSubItems(fabricaSection) : [];
     }
 
     return [];
-  }, [isLoja, isFabrica]);
+  }, [isLoja, isFabrica, userRole]);
 
   const getSectionActiveState = (section) => {
     return section.subItems.some((item) => item.page === paginaAtual);
@@ -327,9 +433,7 @@ function Header({ paginaAtual, setPagina, onLogout, userRole }) {
             <p className="text-[8px] font-black uppercase text-[#b49157] tracking-wider mb-0.5">
               {getRoleLabel()}
             </p>
-            <p className="text-[10px] font-bold text-emerald-100/80">
-              AnaLu
-            </p>
+            <p className="text-[10px] font-bold text-emerald-100/80">AnaLu</p>
           </div>
 
           <button

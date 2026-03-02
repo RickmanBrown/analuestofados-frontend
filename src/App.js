@@ -123,7 +123,7 @@ function App() {
       case "Relatorios": return <Relatorios />;
 
       // === MÓDULO FÁBRICA ===
-      case "DashboardFabrica": return <DashboardFabrica />;
+      case "DashboardFabrica": return <DashboardFabrica />; 
       case "Engenharia": return <Engenharia />; // NOVO
       case "Estoque": return <EstoqueFabrica userRole={role} />;
       case "Suprimentos": return <GestaoInsumos />;
