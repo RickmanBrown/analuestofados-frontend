@@ -23,7 +23,8 @@ import GestaoInsumos from "./pages/fabrica/GestaoInsumos";
 import Qualidade from './pages/fabrica/Qualidade';   
 import Manutencao from './pages/fabrica/Manutencao'; 
 import Engenharia from './pages/fabrica/Engenharia'; 
-import DashboardFabricaFuncionarios from './pages/fabrica/DashboardFabricaFuncionarios';
+import DashboardFabricaFuncionario from './pages/fabrica/DashboardFabricaFuncionario';
+import Restauracao from "./pages/fabrica/Restauracao";
 
 // --- 4. MÓDULO LOJA (PASTA /loja) ---
 import DashboardLoja from './pages/loja/DashboardLoja';
@@ -32,7 +33,7 @@ import PDV from "./pages/loja/PDV";
 import Pedidos from './pages/loja/Pedidos';        
 import Clientes from './pages/loja/Clientes';      
 import Entregas from './pages/loja/Entregas';      
-import DashboardLojaFuncionarios from './pages/loja/DashboardLojaFuncionarios';
+import DashboardLojaFuncionario from './pages/loja/DashboardLojaFuncionario';
 
 // --- 5. MÓDULO FINANCEIRO (PASTA /financeiro) ---
 import DashboardFinanceiro from './pages/financeiro/DashboardFinanceiro';
@@ -89,7 +90,7 @@ function App() {
     // --- 1. VISÃO DO VENDEDOR (LOJA) ---
     if (role === "LOJA") {
       switch (pagina) {
-        case "DashboardLojaFuncionarios": return <DashboardLojaFuncionarios />; 
+        case "DashboardLojaFuncionario": return <DashboardLojaFuncionario />;
         case "Loja": return <AreaLoja userRole={role} />; 
         case "PDV": return <PDV />;                       
         case "Pedidos": return <Pedidos />;               
@@ -102,13 +103,15 @@ function App() {
     // --- 2. VISÃO DO OPERADOR (FÁBRICA) ---
     if (role === "FABRICA") {
       switch (pagina) {
-        case "DashboardFabricaFuncionarios": return <DashboardFabricaFuncionarios />; 
+        case "DashboardFabricaFuncionario": return <DashboardFabricaFuncionario />; 
         case "Engenharia": return <Engenharia />; // NOVO
         case "Estoque": return <EstoqueFabrica userRole={role} />;
         case "Suprimentos": return <GestaoInsumos />;
         case "Qualidade": return <Qualidade />;
         case "Manutencao": return <Manutencao />;
+        case "Restauracao": return <Restauracao />;
         default: return <DashboardFabrica />;
+
       }
     }
 
@@ -126,6 +129,7 @@ function App() {
       case "Suprimentos": return <GestaoInsumos />;
       case "Qualidade": return <Qualidade />;
       case "Manutencao": return <Manutencao />;
+      case "Restauracao": return <Restauracao />;
 
       // === MÓDULO LOJA ===
       case "DashboardLoja": return <DashboardLoja />;

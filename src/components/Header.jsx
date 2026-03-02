@@ -43,19 +43,20 @@ const menuStructure = [
     ],
   },
   {
-    id: "fabrica",
-    label: "Fábrica",
-    icon: <Factory size={15} />,
-    color: "group-hover:text-blue-300",
-    roles: ["ADMIN", "FABRICA"],
-    subItems: [
-      { label: "Painel", page: "DashboardFabricaFuncionarios", icon: <LayoutDashboard size={13} /> },
-      { label: "Produção", page: "Estoque", icon: <Factory size={13} /> },
-      { label: "Insumos", page: "Suprimentos", icon: <Package size={13} /> },
-      { label: "Qualidade", page: "Qualidade", icon: <ClipboardList size={13} /> },
-      { label: "Ativos", page: "Manutencao", icon: <Wrench size={13} /> },
-    ],
-  },
+  id: "fabrica",
+  label: "Fábrica",
+  icon: <Factory size={15} />,
+  color: "group-hover:text-blue-300",
+  roles: ["ADMIN", "FABRICA"],
+  subItems: [
+    { label: "Painel", page: "DashboardFabricaFuncionarios", icon: <LayoutDashboard size={13} /> },
+    { label: "Produção", page: "Estoque", icon: <Factory size={13} /> },
+    { label: "Insumos", page: "Suprimentos", icon: <Package size={13} /> },
+    { label: "Qualidade", page: "Qualidade", icon: <ClipboardList size={13} /> },
+    { label: "Ativos", page: "Manutencao", icon: <Wrench size={13} /> },
+    { label: "Reformas", page: "Restauracao", icon: <Wrench size={13} /> },
+  ],
+},
   {
     id: "loja",
     label: "Loja",
@@ -327,7 +328,7 @@ function Header({ paginaAtual, setPagina, onLogout, userRole }) {
               {getRoleLabel()}
             </p>
             <p className="text-[10px] font-bold text-emerald-100/80">
-              Rickman Brown
+              AnaLu
             </p>
           </div>
 
